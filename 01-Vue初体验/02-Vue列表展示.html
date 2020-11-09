@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <!--v-for遍历数组，将数组中的数据全部展示出来，item在movies中，展示item-->
+        <li v-for="item in movies">{{item}}</li>
+    </ul>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    const app = new Vue({
+        el:'#app',
+        data:{
+            message:'你好啊',
+            movies:['海贼王','星际穿越','喜羊羊','大话西游']
+        }
+    })
+</script>
+</body>
+</html>

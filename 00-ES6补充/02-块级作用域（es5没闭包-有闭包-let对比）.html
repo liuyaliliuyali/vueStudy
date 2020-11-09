@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<button>按钮1</button>
+<button>按钮2</button>
+<button>按钮3</button>
+<button>按钮4</button>
+<button>按钮5</button>
+<script>
+  //ES5之前因为if和for都没有块级作用域的概念，所以在很多时候，我们都必须要借助于function的作用域来解决应用外面变量的问题
+  //ES5只有function有作用域
+  //ES6中还加入了let，let中是有if和let作用域的
+
+
+  //1.变量作用域：变量在什么范围内是可用的。(代码块里面的东西一般是不能访问的)
+  // {var name = 'why';console.log(name);}
+  // console.log(name);
+
+  //2.没有块级作用域引起的问题：if块级作用域(数值会被别人调用篡改，导致想要用该元素的时候元素被篡改了)
+  // var func;
+  // if (true){
+  //   var name = 'why';
+  //   func = function () {
+  //     console.log(name);
+  //   }
+  //
+  //   func()
+  // }
+  // console.log(name);
+
+  //3.没有块级作用域引起的问题：for块级作用域(for里面也没有块级作用域)(出现的问题和if是一样的问题)
+  // var btns = document.getElementsByTagName('button');
+  // for (var i=0; i<btns.length; i++){
+  //   btns[i].addEventListener('click',function(){
+  //     console.log('第' + i + '个按钮被点击');
+  //   })
+  // }
+
+  //为什么闭包可以解决这个问题：函数是有作用域的
+  var btns = document.getElementsByTagName('button');
+  for (var i=0; i<btns.length; i++){
+    (function (num) {
+      btns[i].addEventListener('click',function(){
+        console.log('第' + num + '个按钮被点击');
+      })
+    })(i)
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

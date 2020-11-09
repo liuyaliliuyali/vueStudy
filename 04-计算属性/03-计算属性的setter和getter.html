@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <h2>{{fullName}}</h2>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      firstName: 'Kobe',
+      lastName: 'Bryant'
+    },
+    computed: {
+      //计算属性是get方法的简写，这么写就行，因为不用set方法
+      // fullName() {
+      //   return this.firstName + ' ' + this.lastName
+      // }
+
+      //完整的写法：定义一个属性，属性里面有两个方法，分别是set和get
+      fullName: {
+        //一般不设置set方法，变成只读属性，是不希望被修改的，要是写的话，值就会被修改了，要是被修改的话就要有个接受修改值的地方
+        //所以就设置一个新参数newValue用来接收数据
+        set(newValue){
+          //对字符串进行分隔split('分割的东西'。。。。。这里是空格)
+          const names = newValue.split(' ');
+          //获取到的第一段存入到firstName中
+          //获取到的第二段存入到lastName中
+          this.firstName = names[0];
+          this.lastName = names[1];
+        },
+        //get方法是被调用的，计算属性一般只设置get方法
+        get(){
+          return this.firstName + ' ' + this.lastName
+        }
+      }
+    }
+  })
+</script>
+</body>
+</html>

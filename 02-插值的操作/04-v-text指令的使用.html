@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>v-text</title>
+</head>
+<body>
+<div id="app">
+  <h2>{{message}}</h2>
+  <!--v-text和{{}}语法的用法是一样的，但是一般用{{}}语法 -->
+  <h2 v-text="message"></h2>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: '你好啊！'
+    }
+  })
+</script>
+</body>
+</html>
